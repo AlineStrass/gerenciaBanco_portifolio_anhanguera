@@ -7,7 +7,6 @@ package com.mycompany.gerenciabanco;
 
 import java.util.Scanner; // biblioteca para ler dados
 
-
 public class GerenciaBanco {
 
     public static void main(String[] args) {
@@ -21,8 +20,6 @@ public class GerenciaBanco {
         int opcao = 0;
         double saldo = 0;
         double valor = 0;
-       
-        
 
         //mensagm em tela para o usuário digitar os dados pessoais
         System.out.println("Digite seu primeiro nome: ");
@@ -37,9 +34,8 @@ public class GerenciaBanco {
         //saudação ao usuário
         System.out.println("Olá, " + nome + " " + sobrenome + "! Escolha o que deseja fazer agora!");
 
-       
         ContaBancaria conta = new ContaBancaria(nome, sobrenome, cpf);
-        
+
         //Funções do menu
         do {
             exibeMenu();
@@ -72,7 +68,7 @@ public class GerenciaBanco {
             }
         } while (opcao != 4);
     }
-    
+
     private static void exibeMenu() {
         System.out.println("\n**********************************************");
         System.out.println("1: Consultar Saldo");
@@ -84,38 +80,38 @@ public class GerenciaBanco {
     }
 
     public class ContaBancaria {
+
         private String nome;
         private String sobrenome;
         private Long cpf;
         private double saldo;
-        
-        public ContaBancaria(){
-    }
 
-    public void ContaBancaria(String nome, String sobrenome, Long cpf, double saldo) {       
-        this.nome = nome;
-        this.sobrenome = sobrenome;
-        this.cpf = cpf;
-        this.saldo = saldo;
-    }
+        public ContaBancaria() {
+        }
 
-    public void consultarSaldo() {
-        System.out.println("Saldo atual: R$" + String.format("%.2f", saldo));
-    }
+        public void ContaBancaria(String nome, String sobrenome, Long cpf, double saldo) {
+            this.nome = nome;
+            this.sobrenome = sobrenome;
+            this.cpf = cpf;
+            this.saldo = saldo;
+        }
 
+        public void consultarSaldo() {
+            System.out.println("Saldo atual: R$" + String.format("%.2f", saldo));
+        }
 
-    public void realizarDeposito(double valor) {
-        saldo += valor;
-        System.out.println("Depósito de R$" + String.format("%.2f", valor) + " realizado. Novosaldo:R$" + String.format("%.2f", saldo)); 
-}
-    
-    public void realizarSaque(double valor) {
-        if (valor > saldo) {
-            System.out.println("Saldo insciente.");
-        } else {
-            saldo -= valor;
-            System.out.println("Saque de R$" + String.format("%.2f", valor) + " realizado.Novosaldo:R$" + String.format("%.2f", saldo));
+        public void realizarDeposito(double valor) {
+            saldo += valor;
+            System.out.println("Depósito de R$" + String.format("%.2f", valor) + " realizado. Novosaldo:R$" + String.format("%.2f", saldo));
+        }
+
+        public void realizarSaque(double valor) {
+            if (valor > saldo) {
+                System.out.println("Saldo insciente.");
+            } else {
+                saldo -= valor;
+                System.out.println("Saque de R$" + String.format("%.2f", valor) + " realizado.Novosaldo:R$" + String.format("%.2f", saldo));
+            }
         }
     }
 }
-
