@@ -21,6 +21,7 @@ public class GerenciaBanco {
         int opcao = 0;
         double saldo = 0;
         double valor = 0;
+       
         
 
         //mensagm em tela para o usuário digitar os dados pessoais
@@ -37,7 +38,8 @@ public class GerenciaBanco {
         System.out.println("Olá, " + nome + " " + sobrenome + "! Escolha o que deseja fazer agora!");
 
        
-        //ContaBancaria conta = new ContaBancaria(nome, sobrenome, cpf);
+        ContaBancaria conta = new ContaBancaria(nome, sobrenome, cpf);
+        
         //Funções do menu
         do {
             exibeMenu();
@@ -81,18 +83,20 @@ public class GerenciaBanco {
         System.out.println("\n Digite o número da operação que deseja realizar: ");
     }
 
-    class ContaBancaria {
+    public class ContaBancaria {
         private String nome;
         private String sobrenome;
         private Long cpf;
         private double saldo;
+        
+        public ContaBancaria(){
     }
 
     public void ContaBancaria(String nome, String sobrenome, Long cpf, double saldo) {       
         this.nome = nome;
         this.sobrenome = sobrenome;
         this.cpf = cpf;
-        this.saldo = 0.0;
+        this.saldo = saldo;
     }
 
     public void consultarSaldo() {
@@ -107,10 +111,10 @@ public class GerenciaBanco {
     
     public void realizarSaque(double valor) {
         if (valor > saldo) {
-            System.out.println("Saldo insu昀椀ciente.");
+            System.out.println("Saldo insciente.");
         } else {
             saldo -= valor;
-            System.out.println("Saque de R$" + String.format("%.2f", valor) + " realizado. Novosaldo:R$" + String.format("%.2f", saldo));
+            System.out.println("Saque de R$" + String.format("%.2f", valor) + " realizado.Novosaldo:R$" + String.format("%.2f", saldo));
         }
     }
 }
